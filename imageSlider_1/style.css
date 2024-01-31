@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: Poppins;
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+header{
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+header a{
+    margin-right: 40px;
+}
+
+.crousel{
+    width: 100VW;
+    height: 100VH;
+    overflow: hidden;
+    margin-top: -50PX;
+    position: relative;
+}
+
+.crousel .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.crousel .list .item img{
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+
+.crousel .list .item .content{
+    position: absolute;
+    top: 20%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: white;
+    text-shadow: 0 5px 10px #0004;
+}
+
+.crousel .list .item .content .developer{
+    font-weight: bold;
+    letter-spacing: 10px;
+
+}
+.crousel .list .item .content .title, .crousel .list .item .content .topic{
+    font-weight: bold;
+    font-size: 5em;
+    list-style: 1.3em;
+}
+.crousel .list .item .content .topic{
+    color: rgb(224, 96, 11);
+}
+.crousel .list .item .content .button{
+display: grid;
+grid-template-columns: repeat(2, 130px);
+grid-template-rows: 40px;
+gap: 5px;
+margin-top: 20px;
+}
+.crousel .list .item .content button{
+    border: none;
+    background-color: white;
+    letter-spacing: 3px;
+    font-family: Poopins;
+    font-weight: 500;
+}
+.crousel .list .item .content button:nth-child(2){
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+ /* image card */
+
+ .ImageCard{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+ }
+
+ .ImageCard .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+
+ }
+ .ImageCard .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+ }
+ .ImageCard .item .content{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+ }
+ .ImageCard .item .content .title{
+    font-weight: bold;
+ }
+
+ /* arroubutton css */
+ .ArrowButton{
+position: absolute;
+top: 80%;
+right: 52%;
+width: 300px;
+max-width: 30%;
+display: flex;
+gap: 10px;
+align-items: center;
+
+}
+.ArrowButton button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    font-family: monospace;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+    z-index: 100;
+}
+.ArrowButton button:hover{
+    background-color: #eee;
+    color: #555;
+}
+.crousel .list .item:nth-child(1){
+    z-index: 1;
+
+}
+.crousel .list .item:nth-child(1) .developer,
+.crousel .list .item:nth-child(1) .title,
+.crousel .list .item:nth-child(1) .topic,
+.crousel .list .item:nth-child(1) .description,
+.crousel .list .item:nth-child(1) .button{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: ViewContent 0.5s 1s linear 1 forwards;
+
+}
+
+@keyframes ViewContent{
+    to{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+.crousel .list .item:nth-child(1) .title{
+    animation-delay: 1.2s;
+    
+}
+.crousel .list .item:nth-child(1) .topic{
+    animation-delay: 1.4s;
+
+}
+.crousel .list .item:nth-child(1) .description{
+    animation-delay: 1.6s;
+
+}
+
+.crousel .list .item:nth-child(1) .button{
+    animation-delay: 1.8s;
+}
+
+
+/* effect for next slide on click arrow button */
+
+.crousel.nextSlide .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    border-radius: 20px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+.crousel.nextSlide .ImageCard .item:nth-last-child(1){
+    width: 0;
+    overflow: hidden;
+    animation: ShowCardImage 0.5s linear 1 forwards;
+}
+@keyframes ShowCardImage{
+    to{
+        width: 150px;
+    }
+}
+.crousel.nextSlide .ImageCard{
+    transform: translateX(150px);
+    animation: TransformImageCard 0.5s linear 1 forwards;
+}
+@keyframes TransformImageCard{
+    to{
+        transform: translateX(0);
+    }
+} 
+
+.crousel.previousSlide .list .item:nth-child(2){
+    z-index: 2;
+}
+.crousel.previousSlide .list .item:nth-child(2) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: Imageout 0.5s linear 1 forwards;
+}
+@keyframes Imageout{
+    to{
+        width:150px;
+        height: 220px;
+        border-radius: 20px;
+        left: 50%;
+        bottom: 50px;
+    }
+}
+
+.crousel.previousSlide .ImageCard .item:nth-child(1){
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: ShowCardImage 0.5s linear 1 forwards;
+}
+.crousel.previousSlide .list .item:nth-child(2) .developer,
+.crousel.previousSlide .list .item:nth-child(2) .title,
+.crousel.previousSlide .list .item:nth-child(2) .topic,
+.crousel.previousSlide .list .item:nth-child(2) .description,
+.crousel.previousSlide .list .item:nth-child(2) .button{
+    animation: ContentOut 1.5s linear 1 forwards;
+}
+
+@keyframes ContentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+
+    }
+}
+.crousel.nextSlide .ArrowButton button,
+.crousel.previousSlide .ArrowButton button{
+    pointer-events: none;
+}
+ /* progress style */
+
+ .progress{
+    width: 100%;
+    height: 3px;
+    background-color: rgb(20, 228, 228);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+ }
+
+ .crousel.nextSlide .progress,
+ .crousel.previousSlide .progress{
+    width: 100%;
+    animation: progressBar 2s linear 1 forwards;
+ }
+@keyframes progressBar{
+    to{
+        width: 0;
+    }
+}
+
+@media screen and (max-width:670px) {
+    .crousel .list .item .content{
+        padding-right: 0;
+    }
+    .crousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
